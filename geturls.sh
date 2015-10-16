@@ -11,5 +11,5 @@ function get_the_link()
 	tr \" \\n | grep https\*://
 } #get the links and output them
 
-echo $1
+echo "Listing of all the URLS on the page: " + $1
 get_the_link $1
