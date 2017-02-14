@@ -6,10 +6,18 @@
 ##### Functions
 function get_the_link()
 {
-	echo "Parameter #1 is $1"
+	echo "Website is $1"
+	echo "Filename is $2"
 	wget -qO- $1 |
-	tr \" \\n | grep https\*://
+	tr \" \\n | grep https\*:// > $2
 } #get the links and output them
 
-echo "Listing of all the URLS on the page: " + $1
-get_the_link $1
+	if [ -z $2 ]
+		then
+			echo "No file name so linkdump.txt"
+			$2 = "linkdump.txt"
+			get_the_link $1
+		else
+			echo "Info given"
+			get_the_link $1 $2
+		fi
